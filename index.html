@@ -1740,7 +1740,7 @@ function initPicker(baseId, dateDays = 120) {
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
-                text: `【予約フォーム】\n《お名前》${formData.name}\n《電話番号》${formData.phone}\n《お住まいの地域》${formData.region}\n\n《お問い合わせ内容》\n${formData.inquiry}\n\n【希望日時】\n《第一希望日》\n${formatDate(formData.dates[0])}\n\n《第二希望日》\n${formatDate(formData.dates[1])}\n\n《第三希望日》\n${formatDate(formData.dates[2])}\n\n《メッセージ》\n${formData.message}`
+                text: `【予約フォーム】\n《お名前》${formData.name}\n《電話番号》${formData.phone}\n《お住まいの地域》\n⇒${formData.region}\n\n《お問い合わせ内容》\n${formData.inquiry}\n\n【希望日時】\n《第一希望日》\n${formatDate(formData.dates[0])}\n\n《第二希望日》\n${formatDate(formData.dates[1])}\n\n《第三希望日》\n${formatDate(formData.dates[2])}\n\n《メッセージ》\n${formData.message}`
             }]).then(() => {
                 /* メッセージ送信成功時の処理 */
                 alert('確認してご連絡差し上げます。');
