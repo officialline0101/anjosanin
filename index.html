@@ -960,10 +960,10 @@
 
         <div id="treatment-text" style="display: none; margin-bottom: 10px;"></div>
 
-        <div class="labelmessezi">お住まいの地域</div>
+        <div class="label">お住まいの地域<span class="required">必須</span></div>
         <input type="text" id="region" placeholder="お住まいの地域を入力してください" oninput="saveInput('region')">
 
-        <div class="labelmessezi">お問い合わせ内容</div>
+        <div class="label">お問い合わせ内容<span class="required">必須</span></div>
         <input type="text" id="inquiry" placeholder="お問い合わせ内容を入力してください" oninput="saveInput('inquiry')">
 
         <!-- ② HTML：各ブロックの「日付入力」をラップして“日付を選択”を重ねる -->
@@ -991,7 +991,7 @@
         </div>
 
         <!-- 第三希望日時 -->
-        <div class="labelkibounitizi" id="karenda2">第三希望日時<span class="required">必須</span></div>
+        <div class="labelmessezi" id="karenda2">第三希望日時</div>
         <div class="datetime-wrapper" style="text-align: center;">
             <span class="placeholder" id="placeholder3">⇩タップして日時を入力⇩</span>
             <input type="hidden" id="date3" name="date3">
@@ -1717,11 +1717,26 @@ function initPicker(baseId, dateDays = 120) {
                 return;
             }
 
-            if (!formData.dates[0]) {
-                alert('第1希望日※必須を選択してください。');
+            if (!formData.region) {
+                alert('お住まいの地域を入力してください。');
                 return;
             }
 
+            if (!formData.inquiry) {
+                alert('お問い合わせ内容を入力してください。');
+                return;
+            }
+            
+            if (!formData.dates[0]) {
+                alert('第1希望日を選択してください。');
+                return;
+            }
+
+            if (!formData.dates[1]) {
+                alert('第2希望日を選択してください。');
+                return;
+            }
+            
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
